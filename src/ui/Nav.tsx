@@ -24,8 +24,8 @@ export default function Nav() {
   };
 
   return (
-    <nav className=" hover:cursor-pointer w-full h-fit border-b py-4 px-20 border-black/10">
-      <span className="flex justify-between max-w-[100ch] w-full mx-auto">
+    <nav className=" hover:cursor-pointer w-full h-fit border-b py-4 px-5 lg:px-20 border-black/10">
+      <span className="flex justify-between max-w-[100ch] w-full">
         <Link href="/" className="font-bold uppercase">
           Simple Blog
         </Link>

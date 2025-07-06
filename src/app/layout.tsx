@@ -19,7 +19,7 @@ export default function RootLayout({
         <Providers>
           <div className="antialiased  box-border h-screen ">
             <Nav />
-            <main className="max-w-[80ch] mx-auto mt-10">{children}</main>
+            <main className="max-w-[80ch] mx-5 md:mx-auto mt-10">{children}</main>
           </div>
         </Providers>
       </body>

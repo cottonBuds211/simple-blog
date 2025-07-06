@@ -63,7 +63,7 @@ export default function BlogPage({ blog }: { blog: BlogData }) {
             </div>
           )}
         </span>
-        <span className="flex gap-4 text-sm text-muted">
+        <span className="flex flex-col md:flex-row md:gap-4 text-sm text-muted">
           <p>
             Author:{" "}
             <span className="text-accent/80">{blog.author!.firstName}</span>
