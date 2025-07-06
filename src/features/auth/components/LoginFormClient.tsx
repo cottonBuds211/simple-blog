@@ -8,7 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginFormClient() {
   const router = useRouter();
-  const { user, login } = useAuth();
+  const { login } = useAuth();
 
   const [loginForm, setLoginForm] = useState<LoginFormData>({
     email: "",
@@ -31,8 +31,10 @@ export default function LoginFormClient() {
         alert(`${result?.firstName} log in success.`);
         router.push("/");
       }
-    } catch (error: any) {
-      alert(`${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      alert(`${errorMessage}`);
       console.error("Error loggin in", error);
     }
   };

@@ -22,8 +22,10 @@ export default function BlogPage({ blog }: { blog: BlogData }) {
         await deleteBlog(id);
         alert("Blog deleted!");
       }
-    } catch (error: any) {
-      alert(`${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      alert(`${errorMessage}`);
       console.error("Error delete blog.", error);
     } finally {
       router.push("/my-blogs");

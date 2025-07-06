@@ -16,8 +16,10 @@ export default function Nav() {
         logout();
         alert(`${user?.firstName} logged out!`);
       }
-    } catch (error: any) {
-      alert(`${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      alert(`${errorMessage}`);
     } finally {
       redirect("/");
     }

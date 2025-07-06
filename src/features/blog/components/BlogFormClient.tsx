@@ -40,9 +40,11 @@ export default function BlogFormClient({
         } as UpdateBlogPayload);
       }
       alert("Success");
-    } catch (err: any) {
-      alert(`${err.message}`);
-      console.error("Error creating blog", err);
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      alert(`${errorMessage}`);
+      console.error("Error creating blog", error);
     } finally {
       router.push("/my-blogs");
     }
