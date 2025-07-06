@@ -1,6 +1,5 @@
 import BlogList from "@/features/blog/components/BlogList";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getAllBlogs } from "@/features/blog/blog.services";
 import Pagination from "@/ui/Pagination";
@@ -13,13 +12,12 @@ export default async function MyBlogPage({
   searchParams: { query?: string; page?: string };
 }) {
   const supabase = await createClient();
-  const { query, page } = await searchParams;
+  const { query, page } = searchParams;
   const searchQuery = typeof query === "string" ? query : undefined;
   const currentPage = typeof page === "string" ? Number(page) : 1;
 
   const {
     data: { user },
-    error,
   } = await supabase.auth.getUser();
 
   const { blogs, totalPages } = await getAllBlogs({

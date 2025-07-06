@@ -9,7 +9,7 @@ export default async function Home({
 }: {
   searchParams: { query?: string; page?: string };
 }) {
-  const { query, page } = await searchParams;
+  const { query, page } = searchParams;
   const searchQuery = typeof query === "string" ? query : undefined;
   const currentPage = typeof page === "string" ? Number(page) : 1;
 
