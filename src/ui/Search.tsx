@@ -23,7 +23,7 @@ export default function Search() {
     }, 1000);
 
     return () => clearTimeout(delay);
-  }, [handleSearch, query]);
+  }, [ query]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
