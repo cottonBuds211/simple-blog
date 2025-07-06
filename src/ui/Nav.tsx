@@ -16,11 +16,11 @@ export default function Nav() {
   const activeClass = (href: string) => {
     if (href === "/")
       return pathname === "/" || pathname.startsWith("/blog")
-        ? "font-bold text-accent"
-        : "text-muted hover:font-bold";
+        ? "text-accent"
+        : "text-muted hover:text-primary";
     return pathname.startsWith(href)
-      ? "font-bold text-accent"
-      : "text-muted hover:font-bold";
+      ? "text-accent"
+      : "text-muted hover:text-primary";
   };
 
   return (

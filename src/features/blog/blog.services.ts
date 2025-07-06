@@ -12,7 +12,7 @@ export async function getAllBlogs({userId, query, page="1", pageSize=5} : {userI
             .order("created_at", {ascending:false})
 
     if(query){
-        supabaseQuery = supabaseQuery.or(`title.ilike.%${query}%,description.ilike.%${query}%`)
+        supabaseQuery = supabaseQuery.or(`title.ilike.%${encodeURIComponent(query)}%,description.ilike.%${encodeURIComponent(query)}%`)
     }
     if(userId){
         supabaseQuery = supabaseQuery.eq('author_id', userId)

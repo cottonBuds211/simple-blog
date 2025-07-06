@@ -17,6 +17,7 @@ export default async function Home({
     query: searchQuery,
     page: page,
   });
+  
   return (
     <>
       <header>
