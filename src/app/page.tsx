@@ -7,9 +7,9 @@ import NotFound from "@/ui/NotFound";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { query?: string; page?: string };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { query, page } = searchParams;
+  const { query, page } = await searchParams;
   const searchQuery = typeof query === "string" ? query : undefined;
   const currentPage = typeof page === "string" ? Number(page) : 1;
 

@@ -5,7 +5,6 @@ import { LoginFormData } from "../auth.types";
 import { loginUser } from "../auth.services";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-import { User } from "@/types/user";
 
 export default function LoginFormClient() {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { BlogData, CreateBlogPayload, UpdateBlogPayload } from "@/features/blog/blog.types";
 import { createClient } from "@/utils/supabase/client";
 
-export async function getAllBlogs({userId, query, page="1", pageSize=5} : {userId?:string; query?: string, page?: string, pageSize?:number}): Promise<{blogs: BlogData[]; totalPages: number}>{
+export async function getAllBlogs({userId, query, page="1", pageSize=5} : {userId?:string; query?: string, page?: string | string[], pageSize?:number}): Promise<{blogs: BlogData[]; totalPages: number}>{
     const supabase = createClient()
     const from = (Number(page) - 1) * pageSize
     const to = from + pageSize - 1

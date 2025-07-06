@@ -9,10 +9,10 @@ import Search from "@/ui/Search";
 export default async function MyBlogPage({
   searchParams,
 }: {
-  searchParams: { query?: string; page?: string };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const supabase = await createClient();
-  const { query, page } = searchParams;
+  const { query, page } = await searchParams;
   const searchQuery = typeof query === "string" ? query : undefined;
   const currentPage = typeof page === "string" ? Number(page) : 1;
 
@@ -22,8 +22,8 @@ export default async function MyBlogPage({
 
   const { blogs, totalPages } = await getAllBlogs({
     userId: user!.id,
-    query: searchQuery,
-    page: page,
+    query: searchQuery!,
+    page: page!,
   });
 
   return (

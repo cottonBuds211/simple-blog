@@ -24,25 +24,25 @@ export default function BlogFormClient({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const slug = generateSlug(formData.title!);
-
-    const { author, author_id: _, ...rest } = formData;
     const payload = {
       ...formData,
       slug,
       author_id: user!.id,
     };
     try {
-      pathname.includes("/create")
-        ? await createBlog(payload as CreateBlogPayload)
-        : await updateBlog({
-            ...payload,
-            id: formData.id,
-            updated_at: new Date(),
-          } as UpdateBlogPayload);
+      if (pathname.includes("/create")) {
+        await createBlog(payload as CreateBlogPayload);
+      } else {
+        await updateBlog({
+          ...payload,
+          id: formData.id,
+          updated_at: new Date(),
+        } as UpdateBlogPayload);
+      }
     } catch (err) {
       console.error("Error creating blog", err);
     } finally {
-      alert("Success")
+      alert("Success");
       router.push("/my-blogs");
     }
   };

@@ -1,46 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Input from "./Input";
 import SearchIcon from "./SearchIcon";
-import { useRouter, useSearchParams } from "next/navigation";
 import Xicon from "./Xicon";
+import { useSearch } from "@/hooks/useSearch";
 
 export default function Search() {
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("query") || "");
-  const router = useRouter();
+  const { query, setQuery, handleSearch, handleClear } = useSearch();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
 
   useEffect(() => {
+    if (query.trim() === "") {
+      handleSearch();
+      return;
+    }
+
     const delay = setTimeout(() => {
       handleSearch();
     }, 1000);
 
     return () => clearTimeout(delay);
-  }, [query]);
+  }, [handleSearch, query]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-  const handleSearch = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (query) {
-      params.set("query", query);
-      params.set("page", "1");
-    } else {
-      params.delete("query");
-      params.set("page", "1");
-    }
-    router.push(`?${params.toString()}`);
-  };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
-  const handleClear = () => {
-    setQuery("");
-    router.push(`?`);
-  };
+
   return (
     <div className="flex flex-row w-full mt-2">
       <div className="flex-grow flex flex-row items-center border rounded-l-md focus:outline-none focus-within:ring-inset focus-within:ring-2 focus-within:ring-accent/90 border-black/10 p-2 pl-4">
@@ -53,7 +43,9 @@ export default function Search() {
           placeholder="Search..."
         />
         {query && (
-          <Xicon className={"text-secondary h-4 w-4"} onClick={handleClear} />
+          <button onClick={handleClear}>
+            <Xicon className={"text-secondary h-4 w-4"} onClick={handleClear} />
+          </button>
         )}
       </div>
       <button
@@ -63,6 +55,7 @@ export default function Search() {
             : "hover:bg-gray-200"
         }`}
         onClick={handleSearch}
+        disabled={!query.trim()}
       >
         <SearchIcon className={"text-secondary/80 "} />
       </button>
