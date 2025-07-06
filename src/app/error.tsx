@@ -4,15 +4,15 @@ import Button from "@/ui/Button";
 import Link from "next/link";
 import { useEffect } from "react";
 
-export default function errors({
+export default function Error({
   error,
   reset,
 }: {
-  error: Error;
+  error: Error & { digest?: string };
   reset: () => void;
 }) {
   useEffect(() => {
-    console.log(error);
+    console.error(error);
   }, [error]);
   return (
     <div className="min-h-screen w-full flex flex-col items-center ">
