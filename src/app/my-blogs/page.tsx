@@ -39,8 +39,8 @@ export default async function MyBlogPage({
         </Link>
       </header>
       <Search />
-      <BlogList blogs={blogs} />
-      {totalPages ? (
+        <BlogList blogs={blogs} />
+      {totalPages > 1 ? (
         <Pagination totalPage={totalPages} currentPage={currentPage} />
       ) : (
         <NotFound />

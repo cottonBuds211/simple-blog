@@ -1,6 +1,6 @@
 import Loader from "@/ui/Loader";
 
-export default function GlobalLoading() {
+export default function AuthLoading() {
   return (
     <div className="flex items-center justify-center text-xl">
       <Loader />

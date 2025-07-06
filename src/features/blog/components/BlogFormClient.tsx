@@ -39,10 +39,11 @@ export default function BlogFormClient({
           updated_at: new Date(),
         } as UpdateBlogPayload);
       }
-    } catch (err) {
+      alert("Success");
+    } catch (err: any) {
+      alert(`${err.message}`);
       console.error("Error creating blog", err);
     } finally {
-      alert("Success");
       router.push("/my-blogs");
     }
   };

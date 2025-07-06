@@ -8,7 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginFormClient() {
   const router = useRouter();
-  const {login} = useAuth()
+  const { user, login } = useAuth();
 
   const [loginForm, setLoginForm] = useState<LoginFormData>({
     email: "",
@@ -27,10 +27,12 @@ export default function LoginFormClient() {
     try {
       const result = await loginUser(loginForm);
       if (result) {
-        login(result)
+        login(result);
+        alert(`${result?.firstName} log in success.`);
         router.push("/");
       }
-    } catch (error) {
+    } catch (error: any) {
+      alert(`${error.message}`);
       console.error("Error loggin in", error);
     }
   };

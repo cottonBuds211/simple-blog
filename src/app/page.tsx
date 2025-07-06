@@ -17,7 +17,7 @@ export default async function Home({
     query: searchQuery,
     page: page,
   });
-  
+
   return (
     <>
       <header>
@@ -25,7 +25,7 @@ export default async function Home({
         <Search />
       </header>
       <BlogList blogs={blogs} />
-      {totalPages ? (
+      {totalPages > 1 ? (
         <Pagination totalPage={totalPages} currentPage={currentPage} />
       ) : (
         <NotFound />

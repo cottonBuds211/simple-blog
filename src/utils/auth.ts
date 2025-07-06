@@ -15,11 +15,8 @@ export async function requireAuth(){
 }
 export async function requireNoAuth(){
     const supabase = await createClient()
-    const {data:{user}, error} = await supabase.auth.getUser()
+    const {data:{user}} = await supabase.auth.getUser()
 
-    if (error) {
-        console.error("Auth error:", error.message);
-    }
     if (user) {
         redirect("/");
     }

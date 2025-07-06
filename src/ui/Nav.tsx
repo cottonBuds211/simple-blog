@@ -9,9 +9,18 @@ export default function Nav() {
   const { user, logout } = useAuth();
   const pathname = usePathname();
   const handleLogout = async () => {
-    await logoutUser();
-    logout();
-    redirect("/");
+    try {
+      const logoutConfirm = confirm("Are you sure you want to logout?");
+      if (logoutConfirm) {
+        await logoutUser();
+        logout();
+        alert(`${user?.firstName} logged out!`);
+      }
+    } catch (error: any) {
+      alert(`${error.message}`);
+    } finally {
+      redirect("/");
+    }
   };
   const activeClass = (href: string) => {
     if (href === "/")

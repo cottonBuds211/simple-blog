@@ -16,10 +16,16 @@ export default function BlogPage({ blog }: { blog: BlogData }) {
   const pathname = usePathname();
 
   const handleDelete = async (id: string) => {
-    const deleteConfirm = confirm("Are you sure you want to delete blog!");
-    if (deleteConfirm) {
-      await deleteBlog(id);
-      alert("Blog deleted!");
+    try {
+      const deleteConfirm = confirm("Are you sure you want to delete blog!");
+      if (deleteConfirm) {
+        await deleteBlog(id);
+        alert("Blog deleted!");
+      }
+    } catch (error: any) {
+      alert(`${error.message}`);
+      console.error("Error delete blog.", error);
+    } finally {
       router.push("/my-blogs");
     }
   };

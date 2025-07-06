@@ -33,12 +33,13 @@ export default function RegistrationFormClient() {
         throw Error("Password does not match!");
       }
       const result = await registerUser(userData);
-      
+
       if (result) {
         router.push("/login");
-        console.log("Registration success");
+        alert("Registration success");
       }
-    } catch (error) {
+    } catch (error: any) {
+      alert(`${error.message}`);
       console.error("Error in register", error);
     }
   };
