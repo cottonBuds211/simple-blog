@@ -2,7 +2,7 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import { LoginFormData } from "../auth.types";
-import { loginUser } from "../auth.services";
+import { signIn } from "../auth.services";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -25,7 +25,7 @@ export default function LoginFormClient() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const result = await loginUser(loginForm);
+      const result = await signIn(loginForm);
       if (result) {
         login(result);
         alert(`${result?.firstName} log in success.`);

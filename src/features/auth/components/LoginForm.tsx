@@ -1,5 +1,5 @@
-import Button from "@/ui/Button";
-import Input from "@/ui/Input";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 import { LoginFormProps } from "../auth.types";
 
 export default function LoginForm({

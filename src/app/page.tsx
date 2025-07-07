@@ -1,8 +1,8 @@
 import BlogList from "@/features/blog/components/BlogList";
 import { getAllBlogs } from "@/features/blog/blog.services";
-import Search from "@/ui/Search";
-import Pagination from "@/ui/Pagination";
-import NotFound from "@/ui/NotFound";
+import Search from "@/components/Search";
+import Pagination from "@/components/Pagination";
+import NotFound from "@/components/NotFound";
 
 export default async function Home({
   searchParams,

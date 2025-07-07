@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/ui/Breadcrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogFormClient from "@/features/blog/components/BlogFormClient";
 import { getBlog } from "@/features/blog/blog.services";
 import { SlugPageParams } from "@/types/routes";

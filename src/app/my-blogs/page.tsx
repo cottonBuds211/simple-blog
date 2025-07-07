@@ -2,9 +2,9 @@ import BlogList from "@/features/blog/components/BlogList";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { getAllBlogs } from "@/features/blog/blog.services";
-import Pagination from "@/ui/Pagination";
-import NotFound from "@/ui/NotFound";
-import Search from "@/ui/Search";
+import Pagination from "@/components/Pagination";
+import NotFound from "@/components/NotFound";
+import Search from "@/components/Search";
 
 export default async function MyBlogPage({
   searchParams,
@@ -39,7 +39,7 @@ export default async function MyBlogPage({
         </Link>
       </header>
       <Search />
-        <BlogList blogs={blogs} />
+      <BlogList blogs={blogs} />
       {totalPages > 1 ? (
         <Pagination totalPage={totalPages} currentPage={currentPage} />
       ) : (

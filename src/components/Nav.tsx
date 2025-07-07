@@ -1,6 +1,5 @@
 "use client";
 
-import { logoutUser } from "@/features/auth/auth.services";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
@@ -12,7 +11,6 @@ export default function Nav() {
     try {
       const logoutConfirm = confirm("Are you sure you want to logout?");
       if (logoutConfirm) {
-        await logoutUser();
         logout();
         alert(`${user?.firstName} logged out!`);
       }

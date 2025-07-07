@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/ui/Breadcrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { CreateBlogPayload } from "@/features/blog/blog.types";
 import BlogFormClient from "@/features/blog/components/BlogFormClient";
 

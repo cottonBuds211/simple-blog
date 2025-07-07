@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "@/ui/Nav";
+import Nav from "@/components/Nav";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
@@ -19,7 +19,9 @@ export default function RootLayout({
         <Providers>
           <div className="antialiased  box-border h-screen ">
             <Nav />
-            <main className="max-w-[80ch] mx-5 md:mx-auto mt-10">{children}</main>
+            <main className="max-w-[80ch] mx-5 md:mx-auto mt-10">
+              {children}
+            </main>
           </div>
         </Providers>
       </body>

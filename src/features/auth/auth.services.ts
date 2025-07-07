@@ -22,7 +22,7 @@ export async function registerUser({email, username,password,firstName, lastName
     return {success: true}
 }
 
-export async function loginUser({
+export async function signIn({
     email, password
 }: {email: string, password: string}): Promise<User>{
     const supabase = createClient()
@@ -38,7 +38,7 @@ export async function loginUser({
     return userData
 }
 
-export async function logoutUser(){
+export async function signOut(){
     const supabase = createClient()
     const { error} = await supabase.auth.signOut()
     if (error) throw error

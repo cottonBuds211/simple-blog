@@ -1,7 +1,7 @@
 import React from "react";
 import { RegistrationFormProps } from "../auth.types";
-import Input from "@/ui/Input";
-import Button from "@/ui/Button";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 export default function RegistrationForm({
   handleChange,

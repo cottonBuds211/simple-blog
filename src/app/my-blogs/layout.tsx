@@ -1,4 +1,4 @@
-import { requireAuth } from "@/utils/auth";
+import { requireAuth } from "@/utils/requireAuth";
 
 export default async function MyBlogsLayout({
   children,

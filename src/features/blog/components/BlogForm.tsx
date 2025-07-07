@@ -1,8 +1,8 @@
 "use client";
-import Button from "../../../ui/Button";
+import Button from "../../../components/Button";
 import { BlogFormProps } from "../blog.types";
-import Input from "@/ui/Input";
-import TextArea from "@/ui/TextArea";
+import Input from "@/components/Input";
+import TextArea from "@/components/TextArea";
 
 export default function BlogForm({
   formData,
@@ -45,7 +45,10 @@ export default function BlogForm({
       <Button type="submit" className="bg-accent text-white ">
         {isCreate ? "Publish" : "Update"}
       </Button>
-      <Button type="reset" className="border border-secondary/30 text-secondary">
+      <Button
+        type="reset"
+        className="border border-secondary/30 text-secondary"
+      >
         {isCreate ? "Clear" : "Reset"}
       </Button>
     </form>

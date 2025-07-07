@@ -1,7 +1,7 @@
 "use client";
 import { formatDate } from "@/utils/format";
 import { BlogData } from "../blog.types";
-import Breadcrumbs from "@/ui/Breadcrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import useBlogBasePath from "../hooks/useBlogBasePath";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
