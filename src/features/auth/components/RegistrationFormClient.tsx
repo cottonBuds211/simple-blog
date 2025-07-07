@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function RegistrationFormClient() {
   const router = useRouter();
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const [registrationForm, setRegistrationForm] =
     useState<RegistrationFormData>({
@@ -28,6 +29,7 @@ export default function RegistrationFormClient() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      setSubmitting(true);
       const { confirmPassword, ...userData } = registrationForm;
       if (userData.password !== confirmPassword) {
         throw Error("Password does not match!");
@@ -43,6 +45,8 @@ export default function RegistrationFormClient() {
         error instanceof Error ? error.message : "An unknown error occurred";
       alert(`${errorMessage}`);
       console.error("Error in register", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -52,6 +56,7 @@ export default function RegistrationFormClient() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         registrationForm={registrationForm}
+        isSubmitting={isSubmitting}
       />
     </>
   );

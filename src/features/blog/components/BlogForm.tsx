@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@/components/Loader";
 import Button from "../../../components/Button";
 import { BlogFormProps } from "../blog.types";
 import Input from "@/components/Input";
@@ -10,6 +11,7 @@ export default function BlogForm({
   handleReset,
   handleChange,
   isCreate = false,
+  isSubmitting,
 }: BlogFormProps) {
   return (
     <form
@@ -42,14 +44,19 @@ export default function BlogForm({
         required
       />
 
-      <Button type="submit" className="bg-accent text-white ">
-        {isCreate ? "Publish" : "Update"}
+      <Button
+        type="submit"
+        className="bg-accent text-white "
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? <Loader /> : isCreate ? "Publish" : "Update"}
       </Button>
       <Button
         type="reset"
         className="border border-secondary/30 text-secondary"
+        disabled={isSubmitting}
       >
-        {isCreate ? "Clear" : "Reset"}
+        {isSubmitting ? <Loader /> : isCreate ? "Clear" : "Reset"}
       </Button>
     </form>
   );

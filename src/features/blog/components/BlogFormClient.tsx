@@ -21,6 +21,7 @@ export default function BlogFormClient({
   const [formData, setFormData] = useState<BlogFormData>(initialValues);
   const { user } = useAuth();
   const router = useRouter();
+  const [isSubmitting, setSubmitting] = useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const slug = generateSlug(formData.title!);
@@ -30,6 +31,7 @@ export default function BlogFormClient({
       author_id: user!.id,
     };
     try {
+      setSubmitting(true);
       if (pathname.includes("/create")) {
         await createBlog(payload as CreateBlogPayload);
       } else {
@@ -46,6 +48,7 @@ export default function BlogFormClient({
       alert(`${errorMessage}`);
       console.error("Error creating blog", error);
     } finally {
+      setSubmitting(false);
       router.push("/my-blogs");
     }
   };
@@ -68,6 +71,7 @@ export default function BlogFormClient({
       handleReset={handleReset}
       handleChange={handleChange}
       isCreate={pathname.includes("create")}
+      isSubmitting={isSubmitting}
     />
   );
 }

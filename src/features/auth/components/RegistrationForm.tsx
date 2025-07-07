@@ -2,11 +2,13 @@ import React from "react";
 import { RegistrationFormProps } from "../auth.types";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import Loader from "@/components/Loader";
 
 export default function RegistrationForm({
   handleChange,
   handleSubmit,
   registrationForm,
+  isSubmitting,
 }: RegistrationFormProps) {
   return (
     <div className="flex justify-center items-center">
@@ -65,8 +67,12 @@ export default function RegistrationForm({
         <a href="/login" className="text-end text-sm">
           Back to Login
         </a>
-        <Button className="bg-accent text-white" type="submit">
-          Register
+        <Button
+          className="bg-accent text-white"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? <Loader /> : "Register"}
         </Button>
       </form>
     </div>

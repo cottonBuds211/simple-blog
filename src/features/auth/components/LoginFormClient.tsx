@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 export default function LoginFormClient() {
   const router = useRouter();
   const { login } = useAuth();
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const [loginForm, setLoginForm] = useState<LoginFormData>({
     email: "",
@@ -25,6 +26,7 @@ export default function LoginFormClient() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      setSubmitting(true);
       const result = await signIn(loginForm);
       if (result) {
         login(result);
@@ -36,6 +38,8 @@ export default function LoginFormClient() {
         error instanceof Error ? error.message : "An unknown error occurred";
       alert(`${errorMessage}`);
       console.error("Error loggin in", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -45,6 +49,7 @@ export default function LoginFormClient() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         loginForm={loginForm}
+        isSubmitting={isSubmitting}
       />
     </>
   );
