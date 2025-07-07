@@ -24,9 +24,11 @@ export default async function Home({
         <h1 className="text-2xl font-bold">Check out these blogs</h1>
         <Search />
       </header>
-      <BlogList blogs={blogs} />
-      {totalPages > 1 ? (
-        <Pagination totalPage={totalPages} currentPage={currentPage} />
+      {totalPages ? (
+        <>
+          <BlogList blogs={blogs} />
+          <Pagination totalPage={totalPages} currentPage={currentPage} />
+        </>
       ) : (
         <NotFound />
       )}
