@@ -16,7 +16,7 @@ export  function useAuth() {
     useEffect(() => {
         const getSession = async () => {
             const {data:{session}} = await supabase.auth.getSession()
-            if(session?.user && !isAuthenticated){
+            if(!session?.user && !isAuthenticated){
                 dispatch(logoutUser())
             }
         }
