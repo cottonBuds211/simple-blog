@@ -36,7 +36,7 @@ export default function LoginForm({
         </a>
 
         <Button
-          className="bg-accent text-white"
+          className="bg-accent text-white flex justify-center"
           type="submit"
           disabled={isSubmitting}
         >

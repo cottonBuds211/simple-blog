@@ -46,14 +46,14 @@ export default function BlogForm({
 
       <Button
         type="submit"
-        className="bg-accent text-white "
+        className="bg-accent text-white flex justify-center"
         disabled={isSubmitting}
       >
         {isSubmitting ? <Loader /> : isCreate ? "Publish" : "Update"}
       </Button>
       <Button
         type="reset"
-        className="border border-secondary/30 text-secondary"
+        className="border border-secondary/30 text-secondary flex justify-center"
         disabled={isSubmitting}
       >
         {isSubmitting ? <Loader /> : isCreate ? "Clear" : "Reset"}
