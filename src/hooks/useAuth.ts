@@ -22,7 +22,7 @@ export  function useAuth() {
         }
         getSession()
 
-        const {data:{subscription}} =  supabase.auth.onAuthStateChange(async (event, session) => {
+        const {data:{subscription}} =  supabase.auth.onAuthStateChange(async (event) => {
             if(event === "SIGNED_OUT"){
                 dispatch(logoutUser())
             }
